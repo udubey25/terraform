@@ -1,0 +1,1 @@
+reg = "us-east1"
