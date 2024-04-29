@@ -3,7 +3,7 @@ provider "aws" {
 }
 #creating s3 bucket
 resource "aws_s3_bucket" "terra-state" {
-  bucket = "terra-state-file"
+  bucket = "utkarsh-terra-state-file"
   lifecycle {
     prevent_destroy = true
   }
@@ -12,7 +12,7 @@ resource "aws_s3_bucket" "terra-state" {
 resource "aws_s3_bucket_versioning" "vers-enabl" {
   bucket = aws_s3_bucket.terra-state.id
   versioning_configuration {
-    status = "enabled"
+    status = "Enabled"
   }
 }
 #enabling encryption
@@ -41,4 +41,11 @@ resource "aws_dynamodb_table" "terra-locks" {
     name = "LockID"
     type = "S"
   }
+}
+
+output "aws-s3-bucket-id" {
+  value = aws_s3_bucket.terra-state.arn
+}
+output "aws-s3-dynamodb-id" {
+  value = aws_dynamodb_table.terra-locks.arn
 }
