@@ -1,14 +1,11 @@
-variable "reg" {
-  type    = string
-  default = "us-east-1"
+variable "region" {
+  description = "Select region in which to deploy between us-east-1 and us-east-2"
 }
 
-variable "ami-id" {
-  type    = string
-  default = "ami-06ca3ca175f37dd66"
-}
-
-variable "instace_type" {
-  type    = string
-  default = "t2.micro"
+variable "instance_type" {
+  type = map(any)
+  default = {
+    "us-east-1" = "t2.nano"
+    "us-west-1" = "t2.micro"
+  }
 }

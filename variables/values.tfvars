@@ -1,1 +1,0 @@
-reg = "us-east1"
